@@ -1,9 +1,20 @@
 from test_framework import generic_test
-
+from collections import defaultdict
 
 def is_letter_constructible_from_magazine(letter_text: str,
                                           magazine_text: str) -> bool:
-    # TODO - you fill in here.
+    letter_count = defaultdict(int)
+    magazine_count = defaultdict(int)
+
+    for c in letter_text:
+        letter_count[c] += 1
+    for c in magazine_text:
+        magazine_count[c] += 1
+    
+    for k, v in letter_count.items():
+        if v > magazine_count[k]:
+            return False
+
     return True
 
 
